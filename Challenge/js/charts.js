@@ -82,7 +82,7 @@ function buildCharts(sample) {
     console.log(sorted_otu_labels);
     console.log(sorted_sample_values);
 
-    var yticks = sorted_otu_ids.map(tick => tick.toString());
+    var yticks = sorted_otu_ids.map(tick => "OTU "+tick.toString());
 
     console.log(yticks);
     // 8. Create the trace for the bar chart. 
@@ -96,10 +96,16 @@ function buildCharts(sample) {
 
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top 10 Bacteria",
+      title: "Top 10 Bacteria Cultures Found",
+      yaxis: {
+        tickmode: "array",
+        tickvals: [0,1,2,3,4,5,6,7,8,9],
+        ticktext: yticks
+      }
+        
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", barData);
+    Plotly.newPlot("bar", barData, barLayout);
 
     // 1. Create the trace for the bubble chart.
     var bubbleData = [
