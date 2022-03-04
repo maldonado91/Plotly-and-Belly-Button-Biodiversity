@@ -116,7 +116,9 @@ function buildCharts(sample) {
        mode: 'markers',
        marker: {
         size: sorted_sample_values,
-        sizemode: 'area'}
+        color: sorted_sample_values,
+        colorscale: "reds"
+       }
       }];
 
     // 2. Create the layout for the bubble chart.
